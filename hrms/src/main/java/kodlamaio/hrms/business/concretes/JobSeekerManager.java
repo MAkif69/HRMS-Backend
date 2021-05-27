@@ -11,6 +11,7 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.core.utilities.validations.IdentityCheckService;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerDao;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 
@@ -19,10 +20,12 @@ import kodlamaio.hrms.entities.concretes.JobSeeker;
 public class JobSeekerManager implements JobSeekerService{
 
 	private JobSeekerDao jobSeekerDao;
+	private IdentityCheckService identityCheckerService;
 	
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao, IdentityCheckService identityCheckService) {
 		
+		this.identityCheckerService = identityCheckService;
 		this.jobSeekerDao = jobSeekerDao;
 	}
 	
@@ -37,6 +40,8 @@ public class JobSeekerManager implements JobSeekerService{
 			return new ErrorResult("TC numarası mevcut.");
 		}else if(!this.checkIfPasswordAgain(jobSeeker)) {
 			return new ErrorResult("Parolalar farklı.Lütfen tekrar giriniz");
+		}else if(!identityCheckerService.MernisControl(jobSeeker.getNationalityId(),jobSeeker.getLastName())){
+			return new ErrorResult("Kimlik bilgileri hatalı !");
 		}else {
 			this.jobSeekerDao.save(jobSeeker);
 			return new SuccessResult("Kullanıcı eklendi");

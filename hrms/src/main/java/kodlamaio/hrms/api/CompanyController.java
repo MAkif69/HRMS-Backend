@@ -9,30 +9,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.PositionService;
+import kodlamaio.hrms.business.abstracts.CompanyService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Position;
+import kodlamaio.hrms.entities.concretes.Company;
 
 @RestController
-@RequestMapping("/api/Positions")
-public class PositionController {
-	
-	private PositionService positionService;
+@RequestMapping("/api/Companies")
+public class CompanyController {
+
+	private CompanyService companyService;
 
 	@Autowired
-	public PositionController(PositionService positionService) {
+	public CompanyController(CompanyService companyService) {
 		super();
-		this.positionService = positionService;
+		this.companyService = companyService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Position>> getAll(){
-		return this.positionService.getAll();
-	};
+	public DataResult<List<Company>> getAll(){
+		return this.companyService.getAll();
+	}
 	
 	@PostMapping
-	public Result add(@RequestBody Position position) {
-		return this.positionService.add(position);
+	public Result add(@RequestBody Company company) {
+		
+		return this.companyService.register(company);
+		
 	}
 }

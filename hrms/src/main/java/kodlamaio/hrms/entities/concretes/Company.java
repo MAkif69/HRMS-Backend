@@ -29,7 +29,7 @@ public class Company extends User {
 	
 	@NotNull
 	@Column(name="phone")
-	private int phone;
+	private String phone;
 	
 	@NotNull
 	@Column(name="verify")

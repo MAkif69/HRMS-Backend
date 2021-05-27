@@ -12,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.core.utilities.validations.IdentityCheckService;
+import kodlamaio.hrms.core.utilities.validations.VerificationServiceWithEmail;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerDao;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 
@@ -21,12 +22,15 @@ public class JobSeekerManager implements JobSeekerService{
 
 	private JobSeekerDao jobSeekerDao;
 	private IdentityCheckService identityCheckerService;
+	private VerificationServiceWithEmail verificationforMail;
 	
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao, IdentityCheckService identityCheckService) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao, IdentityCheckService identityCheckService,
+			VerificationServiceWithEmail verificationforMail) {
 		
 		this.identityCheckerService = identityCheckService;
 		this.jobSeekerDao = jobSeekerDao;
+		this.verificationforMail=verificationforMail;
 	}
 	
 
@@ -42,6 +46,8 @@ public class JobSeekerManager implements JobSeekerService{
 			return new ErrorResult("Parolalar farklı.Lütfen tekrar giriniz");
 		}else if(!identityCheckerService.MernisControl(jobSeeker.getNationalityId(),jobSeeker.getLastName())){
 			return new ErrorResult("Kimlik bilgileri hatalı !");
+		}else if(!verificationforMail.verificationMailSending(jobSeeker.getEMail())){
+				return new ErrorResult("Mail adresiniz doğrulanamadı.");
 		}else {
 			this.jobSeekerDao.save(jobSeeker);
 			return new SuccessResult("Kullanıcı eklendi");

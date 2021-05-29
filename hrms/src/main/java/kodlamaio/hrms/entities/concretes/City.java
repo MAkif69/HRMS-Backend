@@ -1,45 +1,39 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="companies")
+@Table(name="cities")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
-public class Company extends User {
+public class City {
 	
-	@NotNull
-	@Column(name="company_name")
-	private String companyName;
 	
-	@NotNull
-	@Column(name="website")
-	private String website;
+	@Id
+	@Autowired
+	@Column(name="id")
+	private int cityId;
 	
-	@NotNull
-	@Column(name="phone")
-	private String phone;
+	@Column(name="city_name")
+	private String cityName;
 	
-	@NotNull
-	@Column(name="verify")
-	private boolean verify; 
-	
-	@OneToMany(mappedBy = "company")
+	@OneToMany(mappedBy = "city")
 	private List<JobPosting> jobPostings;
 }

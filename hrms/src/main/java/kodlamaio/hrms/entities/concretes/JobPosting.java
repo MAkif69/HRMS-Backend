@@ -72,4 +72,5 @@ public class JobPosting {
 	@ManyToOne()
 	@JoinColumn(name = "city_id")
 	private City city;
+	
 }

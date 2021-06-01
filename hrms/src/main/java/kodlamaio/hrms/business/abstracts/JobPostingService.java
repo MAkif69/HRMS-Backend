@@ -14,5 +14,5 @@ public interface JobPostingService {
 	
 	 DataResult<List<JobPosting>> getAllByisActiveTrue();
 	 DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc();
-	 DataResult<List<JobPosting>> findAllByuserIdAndisActiveTrue(int userId);
+	 DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId);
 }

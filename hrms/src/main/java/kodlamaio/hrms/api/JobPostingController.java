@@ -13,7 +13,7 @@ import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
-import kodlamaio.hrms.entities.concretes.JobSeeker;
+
 
 
 @RestController
@@ -44,8 +44,8 @@ public class JobPostingController {
 	}
 	
 	@GetMapping("/getallActiveWithId")
-	public DataResult<List<JobPosting>> getAllActiveWithId(int user_id){
-		return this.jobPostingService.findAllByuserIdAndisActiveTrue(user_id);
+	public DataResult<List<JobPosting>> getAllActiveWithId(int userId){
+		return this.jobPostingService.findAllisActiveTrueAndByCompany_userId(userId);
 	}
 	
 	

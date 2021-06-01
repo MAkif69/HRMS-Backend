@@ -76,9 +76,9 @@ public class JobPostingManager implements JobPostingService{
 	}
 
 	@Override
-	public DataResult<List<JobPosting>> findAllByuserIdAndisActiveTrue(int userId) {
+	public DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId) {
 		
-		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByuser_idAndisActiveTrue(userId)
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllisActiveTrueAndByCompany_userId(userId)
 				,"Şirket id ye göre aktif iş ilanları listelendi");
 	}
 

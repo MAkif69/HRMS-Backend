@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.JobPostingService;
@@ -52,5 +54,12 @@ public class JobPostingController {
 	@PostMapping
 	public Result add(@RequestBody JobPosting jobPosting) {
 		return  this.jobPostingService.add(jobPosting);
+	}
+	
+	@PutMapping("update")
+	public Result update(@RequestParam int jobPostingId,@RequestParam boolean isActive) {
+		
+		return this.jobPostingService.changeActive(jobPostingId, isActive);
+		
 	}
 }

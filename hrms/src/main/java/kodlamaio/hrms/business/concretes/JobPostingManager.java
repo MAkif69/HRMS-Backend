@@ -78,8 +78,25 @@ public class JobPostingManager implements JobPostingService{
 	@Override
 	public DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId) {
 		
-		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllisActiveTrueAndByCompany_userId(userId)
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findByIsActiveTrueAndCompany_userId(userId)
 				,"Şirket id ye göre aktif iş ilanları listelendi");
+	}
+
+	@Override
+	public Result changeActive(int jobPostingId, boolean isActive) { //İş veren ilanın aktiflik durumunu değiştirebilir.
+		try {
+			JobPosting jobPosting;
+			jobPosting = this.jobPostingDao.findById(jobPostingId).get();
+
+			jobPosting.setActive(isActive);
+
+			this.jobPostingDao.save(jobPosting);
+
+			return new SuccessResult("İşlem Başarılı");
+
+		} catch (Exception e) {
+			return new ErrorResult("İşlem Başarısız");
+		}
 	}
 
 }

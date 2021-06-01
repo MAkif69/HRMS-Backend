@@ -12,7 +12,9 @@ public interface JobPostingService {
 	
 	public DataResult<List<JobPosting>> getAll();
 	
-	 DataResult<List<JobPosting>> getAllByisActiveTrue();
-	 DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc();
-	 DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId);
+	  Result changeActive(int jobPostingId,boolean isActive);
+	
+	DataResult<List<JobPosting>> getAllByisActiveTrue();
+	DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc();
+	DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId);
 }

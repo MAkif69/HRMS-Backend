@@ -11,4 +11,8 @@ public interface JobPostingService {
 	public Result add(JobPosting jobPosting);
 	
 	public DataResult<List<JobPosting>> getAll();
+	
+	 DataResult<List<JobPosting>> getAllByisActiveTrue();
+	 DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc();
+	 DataResult<List<JobPosting>> findAllByuserIdAndisActiveTrue(int userId);
 }

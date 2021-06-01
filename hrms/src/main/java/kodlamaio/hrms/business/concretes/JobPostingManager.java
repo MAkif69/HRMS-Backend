@@ -62,4 +62,24 @@ public class JobPostingManager implements JobPostingService{
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll(),"Data listelendi");
 	}
 
+	@Override
+	public DataResult<List<JobPosting>> getAllByisActiveTrue() {
+		
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByisActiveTrue(),"Aktif iş ilanları getiridi...");
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc() {
+		
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByisActiveTrueOrderByCreatedDateDesc()
+				,"Aktif işilanları tarihe göre listelendi...");
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> findAllByuserIdAndisActiveTrue(int userId) {
+		
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByuser_idAndisActiveTrue(userId)
+				,"Şirket id ye göre aktif iş ilanları listelendi");
+	}
+
 }

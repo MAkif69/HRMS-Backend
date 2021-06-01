@@ -33,6 +33,22 @@ public class JobPostingController {
 		return this.jobPostingService.getAll();
 	}
 	
+	@GetMapping("/getallActice")
+	public DataResult<List<JobPosting>> getAllActive(){
+		return this.jobPostingService.getAllByisActiveTrue();
+	}
+	
+	@GetMapping("/getallActiveDesc")
+	public DataResult<List<JobPosting>> getAllActiveDesc(){
+		return this.jobPostingService.findAllByisActiveTrueOrderBycreatedDateDesc();
+	}
+	
+	@GetMapping("/getallActiveWithId")
+	public DataResult<List<JobPosting>> getAllActiveWithId(int user_id){
+		return this.jobPostingService.findAllByuserIdAndisActiveTrue(user_id);
+	}
+	
+	
 	@PostMapping
 	public Result add(@RequestBody JobPosting jobPosting) {
 		return  this.jobPostingService.add(jobPosting);

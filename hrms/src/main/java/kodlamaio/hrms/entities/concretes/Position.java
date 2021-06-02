@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="positions")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings","jobSeekerCv"})
 public class Position {
 	
 	@Id

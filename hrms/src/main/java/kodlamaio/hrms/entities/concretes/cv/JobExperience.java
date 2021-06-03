@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,10 +43,14 @@ public class JobExperience {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Column(name="experience_start_year")
+	@CreationTimestamp     
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date experienceStartYear;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Column(name="experience_finish_year")
+	@CreationTimestamp     
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date experienceFinishYear;
 	
 	@OneToMany(mappedBy = "jobExperience")

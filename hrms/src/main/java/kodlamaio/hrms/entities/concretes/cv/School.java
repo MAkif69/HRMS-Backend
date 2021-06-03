@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -40,10 +44,14 @@ public class School {
 	@NotNull
 	@Column(name="start_date")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") 
+	@CreationTimestamp     
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date   startDate;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") 
 	@Column(name="graduate_year")
+	@CreationTimestamp     
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date   graduateYear;
 	
 	

@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concretes.cv;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,32 +18,20 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="schools")
+@Table(name="coverletters")
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerCv"})
-public class School {
-	
+public class CoverLetter {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="school_id")
-	private int schoolId;
+	@Column(name="letter_id")
+	private int letterId;
 	
-	@NotNull
-	@Column(name="school_name")
-	private String schoolName;
+	@Column(name="cover_letter")
+	private String coverLetter;
 	
-	
-	@NotNull
-	@Column(name="start_date")
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy")
-	private Date   startDate;
-	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy")
-	@Column(name="graduate_year")
-	private Date   graduateYear;
-	
-	
-	@OneToMany(mappedBy = "school")
+	@OneToMany(mappedBy = "coverLetter")
 	private List<JobSeekerCV> jobSeekerCv;
 }

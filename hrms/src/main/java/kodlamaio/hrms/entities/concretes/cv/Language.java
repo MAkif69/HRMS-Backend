@@ -32,10 +32,6 @@ public class Language {
 	@Column(name="language_name")
 	private String languageName;
 	
-	@Column(name="language_level")
-	private int languageLevel;
-	
-	
 	@OneToMany(mappedBy = "language")
 	private List<JobSeekerCV> jobSeekerCv;
 }

@@ -8,11 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import kodlamaio.hrms.entities.concretes.Position;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,14 +37,15 @@ public class JobExperience {
 	@Column(name="worked_with_company")
 	private String workedWıthCompanyName;
 	
-	//çalışılan pozisyon pozisyon tablosundan pozisyon ismi gelecek
-	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Column(name="experience_start_year")
 	private Date experienceStartYear;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Column(name="experience_finish_year")
 	private Date experienceFinishYear;
 	
 	@OneToMany(mappedBy = "jobExperience")
 	private List<JobSeekerCV> jobSeekerCv;
+	
 }

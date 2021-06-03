@@ -34,26 +34,37 @@ public class JobSeekerCV {
 	@Column(name="cv_id")
 	private int cvId;
 	
-	@Column(name="cover_letter")
-	private String coverLetter;
+	@ManyToOne()
+	@JoinColumn(name = "user_id")
+	private JobSeeker jobSeeker;
 	
-	@Column(name="github_account")
-	private String github;
-	
-	@Column(name="lınkedIn_account")
-	private String lınkedIn;
+	@ManyToOne()
+	@JoinColumn(name = "letter_id")
+	private CoverLetter coverLetter;
 	
 	@ManyToOne()
 	@JoinColumn(name = "school_id")
 	private School school;
+	
+	@ManyToOne()
+	@JoinColumn(name = "department_id")
+	private Department department;
 		
 	@ManyToOne()
 	@JoinColumn(name = "language_id")
 	private Language language;
 	
 	@ManyToOne()
+	@JoinColumn(name = "language_level_id")
+	private LanguageLevel languageLevel;
+	
+	@ManyToOne()
 	@JoinColumn(name = "experience_id")
 	private JobExperience jobExperience;
+	
+	@ManyToOne()
+	@JoinColumn(name = "social_id")
+	private SocialMedia socialMedia;
 	
 	@ManyToOne()
 	@JoinColumn(name = "skill_id")
@@ -62,9 +73,6 @@ public class JobSeekerCV {
 	@ManyToOne()
 	@JoinColumn(name = "image_id")
 	private Image image;
-	
-	@ManyToOne()
-	@JoinColumn(name = "user_id")
-	private JobSeeker jobSeeker;
+
 	
 }

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import lombok.Data;
 
 @Data
@@ -29,4 +30,5 @@ public class Position {
 	
 	@OneToMany(mappedBy = "position")
 	private List<JobPosting> jobPostings;
+	
 }

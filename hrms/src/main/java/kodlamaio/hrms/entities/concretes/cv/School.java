@@ -39,10 +39,10 @@ public class School {
 	
 	@NotNull
 	@Column(name="start_date")
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") 
 	private Date   startDate;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") 
 	@Column(name="graduate_year")
 	private Date   graduateYear;
 	

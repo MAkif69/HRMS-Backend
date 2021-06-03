@@ -39,6 +39,6 @@ public class Image {
 	@Column(name="created_date")
 	private Date createdDate;
 	
-	@OneToMany(mappedBy = "image")
-	private List<JobSeekerCV> jobSeekerCv;
+	//@OneToMany(mappedBy = "image")
+	//private List<JobSeekerCV> jobSeekerCv;
 }

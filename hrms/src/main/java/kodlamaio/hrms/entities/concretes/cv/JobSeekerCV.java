@@ -70,9 +70,9 @@ public class JobSeekerCV {
 	@JoinColumn(name = "skill_id")
 	private Skill skill;
 	
-	@ManyToOne()
-	@JoinColumn(name = "image_id")
-	private Image image;
+	//@ManyToOne()
+	//@JoinColumn(name = "image_id")
+	//private Image image;
 
 	
 }

@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,12 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
+import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,6 +30,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings","jobSeekerCv"})
 public class JobSeeker extends User{
 	
 	@NotNull
@@ -46,6 +52,9 @@ public class JobSeeker extends User{
 	@NotNull
 	@Column(name="verify")
 	private boolean verify;
+	
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerCV> jobSeekerCv;
 	
 	//@Column(name="verify_id")
 	//private int verifyId;

@@ -1,3 +1,4 @@
+
 package kodlamaio.hrms.entities.concretes.cv;
 
 import java.util.List;

@@ -12,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerCvDao;
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
+import kodlamaio.hrms.entities.dtos.CvDetailDto;
 
 @Service
 public class JobSeekerCvManager implements JobSeekerCvService {
@@ -35,4 +36,5 @@ public class JobSeekerCvManager implements JobSeekerCvService {
 		
 		return new SuccessDataResult<List<JobSeekerCV>>(this.jobSeekerCvDao.findAll(),"CV listelendi.");
 	}
+
 }

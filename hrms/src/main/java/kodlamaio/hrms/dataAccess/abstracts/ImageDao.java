@@ -6,6 +6,4 @@ import kodlamaio.hrms.entities.concretes.cv.Image;
 
 public interface ImageDao extends JpaRepository<Image, Integer>{
 	
-	
-	Image findByjobseekerCv(int cv_id);
 }

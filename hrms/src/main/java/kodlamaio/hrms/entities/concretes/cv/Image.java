@@ -48,6 +48,6 @@ public class Image {
 	//@OneToMany(mappedBy = "image")
 	//private List<JobSeekerCV> jobSeekerCv;
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cv_id")
 	private JobSeekerCV jobseekerCv;
 }

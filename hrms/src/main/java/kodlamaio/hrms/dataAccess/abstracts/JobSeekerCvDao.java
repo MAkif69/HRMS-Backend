@@ -1,17 +1,21 @@
 package kodlamaio.hrms.dataAccess.abstracts;
 
-import java.util.List;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+
 
 
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
-import kodlamaio.hrms.entities.dtos.CvDetailDto;
+
 
 
 public interface JobSeekerCvDao extends JpaRepository<JobSeekerCV, Integer> {
 
+	
+	//JobSeekerCV findByCvId(int cv_id);
+	
+	
 	/*@Query("Select new kodlamaio.hrms.entities.dtos.CvDetailDto"
             + "(js.FirstName, js.LastName, cvl.coverLatter, sch.schoolName"
             + ",dep.departmentName, sch.startDate, sch.graduateYear"

@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy=InheritanceType.JOINED)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings","jobSeekerCv"})
 public class User {
 	
 	@Id

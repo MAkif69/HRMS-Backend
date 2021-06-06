@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.awt.Image;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
@@ -55,7 +57,7 @@ public class JobSeeker extends User{
 	
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerCV> jobSeekerCv;
-	
+
 	//@Column(name="verify_id")
 	//private int verifyId;
 	

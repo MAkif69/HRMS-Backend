@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kodlamaio.hrms.business.abstracts.ImageService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-
+import kodlamaio.hrms.entities.concretes.JobSeeker;
 import kodlamaio.hrms.entities.concretes.cv.Image;
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 
@@ -29,12 +29,12 @@ public class ImageController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody MultipartFile file, @RequestParam int cvId)
+	public Result add(@RequestBody MultipartFile file, @RequestParam int userId)
 	{
 		Image image =new Image();
-		JobSeekerCV jobSeekerCV =new JobSeekerCV();
-		jobSeekerCV.setCvId(cvId);
-		image.setJobseekerCv(jobSeekerCV);
+		JobSeeker jobSeeker =new JobSeeker();
+		jobSeeker.setUserId(userId);
+		image.setJobSeeker(jobSeeker);
 		
 		return this.imageService.addCloudinary(image,file);
 	}

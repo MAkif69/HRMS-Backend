@@ -77,9 +77,9 @@ public class JobSeekerCV {
 	
 	//@ManyToOne()
 	//@JoinColumn(name="image_id")
-	@JsonIgnore
-	@OneToOne(mappedBy = "jobseekerCv", optional = false, fetch = FetchType.LAZY)
-	private Image image;
+	//@JsonIgnore
+	//@OneToOne(mappedBy = "jobseekerCv", optional = false, fetch = FetchType.LAZY)
+	//private Image image;
 	
 	//@ManyToOne()
 	//@JoinColumn(name = "image_id")

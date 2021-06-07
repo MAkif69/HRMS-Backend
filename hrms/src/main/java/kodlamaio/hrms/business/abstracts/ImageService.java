@@ -16,5 +16,5 @@ public interface ImageService {
 	
 	
 	Result addCloudinary(Image image,MultipartFile file);
-	DataResult<List<Image>> findByJobSeekerCV_cvId(int cvId);
+	DataResult<List<Image>> findByJobSeeker_userId(int userId);
 }

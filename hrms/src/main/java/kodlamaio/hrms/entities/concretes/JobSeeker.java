@@ -1,6 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.awt.Image;
+
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
+import kodlamaio.hrms.entities.concretes.cv.Image;
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -57,6 +58,9 @@ public class JobSeeker extends User{
 	
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerCV> jobSeekerCv;
+	
+	@OneToOne(mappedBy = "jobSeeker", optional = false, fetch = FetchType.LAZY)
+	private Image image;
 
 	//@Column(name="verify_id")
 	//private int verifyId;

@@ -17,8 +17,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
+import kodlamaio.hrms.entities.concretes.JobSeeker;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +28,7 @@ import lombok.NoArgsConstructor;
 @Table(name="images")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerCv"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeeker"})
 public class Image {
  
 	
@@ -48,6 +47,6 @@ public class Image {
 	//@OneToMany(mappedBy = "image")
 	//private List<JobSeekerCV> jobSeekerCv;
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
-	@JoinColumn(name = "cv_id")
-	private JobSeekerCV jobseekerCv;
+	@JoinColumn(name = "jobSeeker_userId")
+	private JobSeeker jobSeeker;
 }

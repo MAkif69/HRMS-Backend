@@ -53,9 +53,9 @@ public class ImageManager implements ImageService{
 	}
 
 	@Override
-	public DataResult<List<Image>> findByJobSeekerCV_cvId(int CvId) {
+	public DataResult<List<Image>> findByJobSeeker_userId(int userId) {
 		
-		return new SuccessDataResult<List<Image>>(imageDao.findByjobseekerCv_CvId(CvId),"Fotoğraf Id ye göre getirildi...");
+		return new SuccessDataResult<List<Image>>(imageDao.findByjobSeeker_userId(userId),"Fotoğraf Id ye göre getirildi...");
 	}
 	
 	

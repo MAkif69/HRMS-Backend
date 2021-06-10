@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy=InheritanceType.JOINED)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings","jobSeekerCv"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings","jobSeekerCv"})
 public class User {
 	
 	@Id
@@ -32,9 +33,11 @@ public class User {
 	private String eMail;
 	
 	@NotNull
+	@JsonIgnore
 	@Column(name="password")
 	private String password;
 	
+	@JsonIgnore
 	private String enterPasswordAgain;
 	
 }

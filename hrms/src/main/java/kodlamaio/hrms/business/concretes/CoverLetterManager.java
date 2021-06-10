@@ -12,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CoverLetterDao;
 import kodlamaio.hrms.entities.concretes.cv.CoverLetter;
+import kodlamaio.hrms.entities.concretes.cv.JobExperience;
 
 @Service
 public class CoverLetterManager implements CoverLetterService {
@@ -34,6 +35,12 @@ public class CoverLetterManager implements CoverLetterService {
 	public DataResult<List<CoverLetter>> getAll() {
 		
 		return new SuccessDataResult<List<CoverLetter>>(this.coverLetterDao.findAll(),"Ön yazılar listelendi.");
+	}
+
+	@Override
+	public DataResult<List<CoverLetter>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<CoverLetter>>(this.coverLetterDao.findByJobSeekerCv_cvId(cvId));
 	}
 	
 }

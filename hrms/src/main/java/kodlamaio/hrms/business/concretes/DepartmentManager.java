@@ -34,6 +34,12 @@ public class DepartmentManager implements DepartmentService {
 	public DataResult<List<Department>> getAll() {
 		
 		return new  SuccessDataResult<List<Department>>(this.departmentDao.findAll(),"Bölümler listelendi");
+	}
+
+	@Override
+	public DataResult<List<Department>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<Department>>(this.departmentDao.findByJobSeekerCv_cvId(cvId));
 	};
 	
 }

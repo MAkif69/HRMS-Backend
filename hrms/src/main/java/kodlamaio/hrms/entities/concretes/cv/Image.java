@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import kodlamaio.hrms.entities.concretes.JobSeeker;
@@ -41,6 +42,7 @@ public class Image {
 	private String url;
 	
 	@Column(name="created_date")
+	@JsonIgnore
 	private LocalDate createdDate;
 	
 	

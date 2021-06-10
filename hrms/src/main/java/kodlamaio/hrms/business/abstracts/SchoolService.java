@@ -16,4 +16,6 @@ public interface SchoolService {
 	public SuccessDataResult<List<School>> findAllByschoolIdOrderByGraduateYear(int schoolId);
 	public SuccessDataResult<List<School>> findByOrderByschoolIdAsc();
 	
+	DataResult<List<School>> findByJobSeekerCv_cvId(int cvId);
+	
 }

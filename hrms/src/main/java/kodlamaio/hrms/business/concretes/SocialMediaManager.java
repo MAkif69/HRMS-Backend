@@ -35,6 +35,12 @@ public class SocialMediaManager implements SocialMediaService {
 		
 		return new SuccessDataResult<List<SocialMedia>>(this.socialMediaDao.findAll(),"Sosyal medya hesapları listelendi");
 	}
+
+	@Override
+	public DataResult<List<SocialMedia>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<SocialMedia>>(this.socialMediaDao.findByJobSeekerCv_cvId(cvId));
+	}
 	
 	
 }

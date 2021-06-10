@@ -15,4 +15,6 @@ public interface JobSeekerCvService {
 	
 	
 	//DataResult<List<CvDetailDto>> getCvtWithDetails();
+	
+	DataResult<CvDetailDto> getCvWithDetails(int userId);
 }

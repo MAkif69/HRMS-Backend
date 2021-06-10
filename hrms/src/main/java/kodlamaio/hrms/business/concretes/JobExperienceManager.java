@@ -42,4 +42,10 @@ public class JobExperienceManager implements JobExperienceService {
 		return new SuccessDataResult<List<JobExperience>>(this.jobExperienceDao.findByOrderByExperienceIdAsc());
 	}
 
+	@Override
+	public DataResult<List<JobExperience>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<JobExperience>>(this.jobExperienceDao.findByJobSeekerCv_cvId(cvId));
+	}
+
 }

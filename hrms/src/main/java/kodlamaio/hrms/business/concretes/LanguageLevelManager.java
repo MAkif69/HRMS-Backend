@@ -1,10 +1,14 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.LanguageLevelService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.LanguageLevelDao;
 import kodlamaio.hrms.entities.concretes.cv.LanguageLevel;
@@ -24,5 +28,11 @@ public class LanguageLevelManager implements LanguageLevelService {
 	public Result add(LanguageLevel languageLevel) {
 		this.languageLevelDao.save(languageLevel);
 		return new SuccessResult("Dil seviyesi eklendi");
+	}
+
+	@Override
+	public DataResult<List<LanguageLevel>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<LanguageLevel>>(this.languageLevelDao.findByJobSeekerCv_cvId(cvId));
 	}
 }

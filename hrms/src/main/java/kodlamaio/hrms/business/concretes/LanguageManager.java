@@ -35,4 +35,10 @@ public class LanguageManager  implements LanguageService{
 	
 		return new SuccessDataResult<List<Language>>(this.languageDao.findAll(),"Diller listelendi");
 	}
+
+	@Override
+	public DataResult<List<Language>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<Language>>(this.languageDao.findByJobSeekerCv_cvId(cvId));
+	}
 }

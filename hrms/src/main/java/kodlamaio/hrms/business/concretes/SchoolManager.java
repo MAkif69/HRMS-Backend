@@ -55,5 +55,12 @@ public class SchoolManager implements SchoolService {
 	}
 
 
+	@Override
+	public DataResult<List<School>> findByJobSeekerCv_cvId(int cvId) {
+		
+		return new SuccessDataResult<List<School>>(this.schoolDao.findByJobSeekerCv_cvId(cvId));
+	}
+
+
 
 }

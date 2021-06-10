@@ -45,6 +45,7 @@ public class JobSeeker extends User{
 	private String lastName;
 	
 	@NotNull
+	@JsonIgnore
 	@Column(name="nationality_id")
 	private String nationalityId;
 	
@@ -53,6 +54,7 @@ public class JobSeeker extends User{
 	private Date   birthDate;
 	
 	@NotNull
+	@JsonIgnore
 	@Column(name="verify")
 	private boolean verify;
 	

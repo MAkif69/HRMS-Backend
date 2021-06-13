@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
@@ -22,6 +23,7 @@ public class Position {
 	
 	@Id
 	@GeneratedValue
+	@JsonIgnore
 	@Column(name="position_id")
 	private int positionId;
 	

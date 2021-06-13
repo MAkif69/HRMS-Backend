@@ -15,6 +15,7 @@ import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.dtos.JobPostingDto;
 
 
 
@@ -29,11 +30,11 @@ public class JobPostingController {
 		super();
 		this.jobPostingService = jobPostingService;
 	}
-	
-	@GetMapping("/getall")
-	public DataResult<List<JobPosting>> getAll(){
-		return this.jobPostingService.getAll();
-	}
+//	
+//	@GetMapping("/getall")
+//	public DataResult<List<JobPosting>> getAll(){
+//		return this.jobPostingService.getAll();
+//	}
 	
 	@GetMapping("/getallActice")
 	public DataResult<List<JobPosting>> getAllActive(){
@@ -49,6 +50,11 @@ public class JobPostingController {
 	public DataResult<List<JobPosting>> getAllActiveWithId(int userId){
 		return this.jobPostingService.findAllisActiveTrueAndByCompany_userId(userId);
 	}
+	
+	@GetMapping("/getJobPostWithDetails")
+	public DataResult<JobPostingDto> getJobPostWithDetails(int jobPostingId){
+		return this.jobPostingService.getJobPostWithDetails(jobPostingId);
+	};
 	
 	
 	@PostMapping

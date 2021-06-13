@@ -39,6 +39,14 @@ public class PositionManager implements PositionService {
 		return new  SuccessResult("Pozisyon Eklendi");
 	}
 	
+
+	@Override
+	public DataResult<List<Position>> findByJobPostings_jobPostingId(int jobPostingId) {
+		
+		return new SuccessDataResult<List<Position>>(this.positionDao.findByJobPostings_jobPostingId(jobPostingId));
+	}
+	
+	
 	//My Business Codes
 	
 	boolean checkIfPositionExists(Position position) {
@@ -47,7 +55,7 @@ public class PositionManager implements PositionService {
 		}
 		    return true;
 	}
-	
+
 
 
 }

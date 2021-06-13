@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.abstracts.CityService;
+import kodlamaio.hrms.business.abstracts.CompanyService;
 import kodlamaio.hrms.business.abstracts.JobPostingService;
+import kodlamaio.hrms.business.abstracts.PositionService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -13,16 +16,24 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.dtos.CvDetailDto;
+import kodlamaio.hrms.entities.dtos.JobPostingDto;
 
 @Service
 public class JobPostingManager implements JobPostingService{
 
 	private JobPostingDao jobPostingDao;
+	private CityService cityServie;
+	private PositionService positionService;
+	private CompanyService companyService;
 	
 	@Autowired
-	public JobPostingManager(JobPostingDao jobPostingDao) {
+	public JobPostingManager(JobPostingDao jobPostingDao,CityService cityServie,PositionService positionService,CompanyService companyService) {
 		super();
 		this.jobPostingDao = jobPostingDao;
+		this.cityServie=cityServie;
+		this.positionService=positionService;
+		this.companyService=companyService;
 	}
 
 	@Override
@@ -36,25 +47,6 @@ public class JobPostingManager implements JobPostingService{
 		
 	}
 	
-//My business codes
-	
-	 boolean CheckMandatoryRules(JobPosting jobPosting) {
-		  
-			if (
-					 jobPosting.getJobDescription().isEmpty() 
-					
-					|| jobPosting.getOpenPositionNumber() == 0
-					)
-					
-			{
-				return false;
-			} 
-			else 
-			{
-				return true;
-			}
-
-		}
 
 	@Override
 	public DataResult<List<JobPosting>> getAll() {
@@ -98,5 +90,42 @@ public class JobPostingManager implements JobPostingService{
 			return new ErrorResult("İşlem Başarısız");
 		}
 	}
+	
+	@Override
+	public DataResult<JobPostingDto> getJobPostWithDetails(int jobPostingId) {
+		
+		JobPostingDto jobPostingDto = new JobPostingDto();
+		
+		jobPostingDto.setJobPosting(this.jobPostingDao.findById(jobPostingId).get());
+		jobPostingDto.setCities(this.cityServie.findByJobPostings_jobPostingId(jobPostingId).getData());
+		jobPostingDto.setPositions(this.positionService.findByJobPostings_jobPostingId(jobPostingId).getData());
+		jobPostingDto.setCompanies(this.companyService.findByJobPostings_jobPostingId(jobPostingId).getData());
+		
+		return new SuccessDataResult<JobPostingDto>(jobPostingDto,"İş ilanı ayrıntısı ile listelendi...");
+		
+		
+	}
+	
+	//My business codes
+	
+		 boolean CheckMandatoryRules(JobPosting jobPosting) {
+			  
+				if (
+						 jobPosting.getJobDescription().isEmpty() 
+						
+						|| jobPosting.getOpenPositionNumber() == 0
+						)
+						
+				{
+					return false;
+				} 
+				else 
+				{
+					return true;
+				}
+
+			}
+
+
 
 }

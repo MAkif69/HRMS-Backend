@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class City {
 	
 	@Id
 	@Autowired
+	@JsonIgnore
 	@Column(name="id")
 	private int cityId;
 	

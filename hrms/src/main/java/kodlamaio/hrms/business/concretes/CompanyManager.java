@@ -14,6 +14,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.core.utilities.validations.ConfirmAllUserBySystemUser;
 import kodlamaio.hrms.core.utilities.validations.VerificationServiceWithEmail;
 import kodlamaio.hrms.dataAccess.abstracts.CompanyDao;
+import kodlamaio.hrms.entities.concretes.City;
 import kodlamaio.hrms.entities.concretes.Company;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 
@@ -59,6 +60,12 @@ public class CompanyManager implements CompanyService{
 		return new SuccessDataResult<List<Company>>(this.companyDao.findAll(), "Data listelendi.");
 	}
 	
+	@Override
+	public DataResult<List<Company>> findByJobPostings_jobPostingId(int jobPostingId) {
+		
+		return new SuccessDataResult<List<Company>>(this.companyDao.findByJobPostings_jobPostingId(jobPostingId));
+	}
+	
 	
 //My Business Codes
 	  boolean nullOrEmptyBlockCheck(Company company) {
@@ -66,7 +73,7 @@ public class CompanyManager implements CompanyService{
 			if (company.getCompanyName().isEmpty()
 					|| company.getWebsite().isEmpty()
 					|| company.getPhone().isEmpty()
-					|| company.getEMail().isEmpty() 
+					|| company.getEMail().isEmpty()
 					|| company.getPassword().isEmpty())
 					
 			{
@@ -111,5 +118,7 @@ public class CompanyManager implements CompanyService{
 		  
 		  return true;
 	  }
+
+
 
 }

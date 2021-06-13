@@ -11,4 +11,6 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 	 List<JobPosting> findAllByisActiveTrue();
 	 List<JobPosting> findAllByisActiveTrueOrderByCreatedDateDesc();
 	 List<JobPosting> findByIsActiveTrueAndCompany_userId(int userId);
+	 
+
 }

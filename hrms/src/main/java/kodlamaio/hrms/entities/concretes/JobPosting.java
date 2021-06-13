@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -33,6 +34,7 @@ public class JobPosting {
 	
 	@Id
 	@Column(name="job_postId")
+	@JsonIgnore
 	@GeneratedValue
 	private int jobPostingId;
 	
@@ -62,14 +64,17 @@ public class JobPosting {
 	private boolean isActive;
 	
 	@ManyToOne()
+	@JsonIgnore
 	@JoinColumn(name = "position_id")
 	private Position position;
 	 
 	@ManyToOne()
+	@JsonIgnore
 	@JoinColumn(name = "user_id")
 	private Company company;
 	 
 	@ManyToOne()
+	@JsonIgnore
 	@JoinColumn(name = "city_id")
 	private City city;
 	

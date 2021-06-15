@@ -2,8 +2,7 @@ package kodlamaio.hrms.entities.concretes;
 
 
 import java.sql.Date;
-
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +27,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-
 public class JobPosting {
 	
 	
@@ -53,6 +51,7 @@ public class JobPosting {
 	private int openPositionNumber;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonIgnore
 	@Column(name="created_date")
 	private Date createdDate;
 	
@@ -61,6 +60,7 @@ public class JobPosting {
 	private Date lastApplyDate;
 	
 	@Column(name="is_active")
+	@JsonIgnore
 	private boolean isActive;
 	
 	@ManyToOne()

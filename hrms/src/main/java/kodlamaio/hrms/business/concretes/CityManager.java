@@ -28,12 +28,5 @@ public class CityManager implements CityService {
 		return new SuccessDataResult<List<City>>(this.cityDao.findByJobPostings_jobPostingId(jobPostingId));
 	}
 
-
-
-//	@Override
-//	public DataResult<List<City>> findAll() {
-//		
-//		return new SuccessDataResult<List<City>>(this.cityDao.findAll());
-//	}
 	
 }

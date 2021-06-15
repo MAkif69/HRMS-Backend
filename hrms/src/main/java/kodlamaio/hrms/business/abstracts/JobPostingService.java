@@ -6,6 +6,7 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
 import kodlamaio.hrms.entities.dtos.JobPostingDto;
+import kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery;
 
 public interface JobPostingService {
 	
@@ -20,4 +21,7 @@ public interface JobPostingService {
 	DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId);
 	
 	DataResult<JobPostingDto> getJobPostWithDetails(int jobPostingId);
+	
+	DataResult<List<GetJobPostingDtoWithQuery>> GetJobPostingDtoWithQuery();
+
 }

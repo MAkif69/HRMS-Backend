@@ -9,5 +9,5 @@ public interface CityService {
 	
 	DataResult<List<City>> findByJobPostings_jobPostingId(int jobPostingId);
 	
-//	DataResult<List<City>> findAll();
+    //DataResult<List<City>> findAll();
 }

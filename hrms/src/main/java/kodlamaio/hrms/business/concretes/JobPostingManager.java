@@ -16,7 +16,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
-import kodlamaio.hrms.entities.dtos.CvDetailDto;
+import kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery;
 import kodlamaio.hrms.entities.dtos.JobPostingDto;
 
 @Service
@@ -106,6 +106,14 @@ public class JobPostingManager implements JobPostingService{
 		
 	}
 	
+	@Override
+	public DataResult<List<GetJobPostingDtoWithQuery>> GetJobPostingDtoWithQuery(){
+		
+		return new SuccessDataResult<List<GetJobPostingDtoWithQuery>>(this.jobPostingDao.GetJobPostingDtoWithQuery(),"İlanlar listelendi...");
+	}
+	
+	
+		
 	//My business codes
 	
 		 boolean CheckMandatoryRules(JobPosting jobPosting) {
@@ -125,7 +133,5 @@ public class JobPostingManager implements JobPostingService{
 				}
 
 			}
-
-
 
 }

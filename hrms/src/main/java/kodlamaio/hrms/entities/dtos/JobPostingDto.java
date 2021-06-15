@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class JobPostingDto {
 
 	
-	private JobPosting jobPosting;
+	private JobPosting	 jobPosting;
 	private List<Company> companies;
 	private List<Position> positions;
 	private List<City> cities;

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
@@ -29,14 +30,17 @@ public class Company extends User {
 	private String companyName;
 	
 	@NotNull
+	@JsonIgnore
 	@Column(name="website")
 	private String website;
 	
 	@NotNull
+	@JsonIgnore
 	@Column(name="phone")
 	private String phone;
 	
 	@NotNull
+	@JsonIgnore
 	@Column(name="verify")
 	private boolean verify; 
 	

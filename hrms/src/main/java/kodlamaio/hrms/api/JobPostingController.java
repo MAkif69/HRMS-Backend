@@ -3,6 +3,7 @@ package kodlamaio.hrms.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,12 +16,14 @@ import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery;
 import kodlamaio.hrms.entities.dtos.JobPostingDto;
 
 
 
 @RestController
 @RequestMapping("/api/JopPostings")
+@CrossOrigin
 public class JobPostingController {
 
 	private JobPostingService jobPostingService;
@@ -30,11 +33,11 @@ public class JobPostingController {
 		super();
 		this.jobPostingService = jobPostingService;
 	}
-//	
-//	@GetMapping("/getall")
-//	public DataResult<List<JobPosting>> getAll(){
-//		return this.jobPostingService.getAll();
-//	}
+	
+	@GetMapping("/getall")
+	public DataResult<List<JobPosting>> getAll(){
+		return this.jobPostingService.getAll();
+	}
 	
 	@GetMapping("/getallActice")
 	public DataResult<List<JobPosting>> getAllActive(){
@@ -56,6 +59,11 @@ public class JobPostingController {
 		return this.jobPostingService.getJobPostWithDetails(jobPostingId);
 	};
 	
+	@GetMapping("/GetJobPostingDtoWithQuery")
+	public DataResult<List<GetJobPostingDtoWithQuery>>  GetJobPostingDtoWithQuery(){
+		
+		return this.jobPostingService.GetJobPostingDtoWithQuery();
+	};
 	
 	@PostMapping
 	public Result add(@RequestBody JobPosting jobPosting) {

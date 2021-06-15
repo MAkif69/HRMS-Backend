@@ -16,6 +16,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import kodlamaio.hrms.entities.concretes.cv.SocialMedia;
 import kodlamaio.hrms.entities.dtos.CvDetailDto;
+import kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery;
 
 @RestController
 @RequestMapping("/api/JobSeekerCvs")
@@ -45,4 +46,8 @@ public class JobSeekerCvController {
 		return this.jobSeekerCvService.getCvWithDetails(userId);
 	};
 
+	@GetMapping("/GetCvDetailDtoWithQuery")
+	public DataResult<List<GetCvDetailDtoWithQuery>> GetCvDetailDtoWithQuery(){
+		return this.jobSeekerCvService.GetCvDetailDtoWithQuery();
+	}
 }

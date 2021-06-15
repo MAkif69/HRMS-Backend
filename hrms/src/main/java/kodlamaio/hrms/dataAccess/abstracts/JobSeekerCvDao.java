@@ -2,35 +2,24 @@ package kodlamaio.hrms.dataAccess.abstracts;
 
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-
-
+import org.springframework.data.jpa.repository.Query;
 
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
+import kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery;
 
 
 
 public interface JobSeekerCvDao extends JpaRepository<JobSeekerCV, Integer> {
-
 	
-	//JobSeekerCV findByCvId(int cv_id);
-	
-	
-	/*@Query("Select new kodlamaio.hrms.entities.dtos.CvDetailDto"
-            + "(js.FirstName, js.LastName, cvl.coverLatter, sch.schoolName"
-            + ",dep.departmentName, sch.startDate, sch.graduateYear"
-            + ",jbe.workedWıthCompanyName, jbe.experienceStartYear, jbe.experienceFinishYear"
-            + ",lang.languageName, langl.languageLevel, skl.skillName, skl.technologyName"
-            + ",sm.github, sm.lınkedIn)"
-            + "From JobSeekerCv jsc "
-            + "Inner Join jsc.JobSeeker js"
-            + "Inner Join jsc.CoverLetter cvl"
-            + "Inner Join jsc.School sch"
-            + "Inner Join jsc.JobExperience jbe"
-            + "Inner Join jsc.Language lang"
-            + "Inner Join jsc.LanguageLevel langl"
-            + "Inner Join jsc.Skill skl"
-            + "Inner Join jsc.SocialMedia sm"
-            + "Inner Join jsc.Department dep")
-   List<CvDetailDto> getCvtWithDetails();*/ 
+	@Query("Select new kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery"
+			+"(jc.id, ım.url, js.firstName, js.lastName, js.birthDate, c.coverLetter, s.schoolName, s.startDate, s.graduateYear, d.departmentName,"
+			+" e.workedWıthCompanyName, e.experienceStartYear, e.experienceFinishYear, l.languageName, le.languageLevel, sm.github,"
+			+ " sm.lınkedIn, sk.skillName, sk.technologyName)"
+			+"From JobSeekerCV jc Inner Join jc.jobSeeker js Inner Join jc.coverLetter c Inner Join jc.school s "
+			+"Inner Join jc.department d Inner Join jc.jobExperience e Inner Join jc.language l Inner Join jc.languageLevel le "
+			+"Inner Join jc.socialMedia sm Inner Join jc.skill sk Inner Join js.image ım")
+	List<GetCvDetailDtoWithQuery> GetCvDetailDtoWithQuery();
 }

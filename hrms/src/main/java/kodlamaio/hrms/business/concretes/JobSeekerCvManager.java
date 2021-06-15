@@ -25,6 +25,7 @@ import kodlamaio.hrms.dataAccess.abstracts.JobSeekerCvDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerDao;
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import kodlamaio.hrms.entities.dtos.CvDetailDto;
+import kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery;
 
 @Service
 public class JobSeekerCvManager implements JobSeekerCvService {
@@ -101,5 +102,11 @@ public class JobSeekerCvManager implements JobSeekerCvService {
 		
 		return new SuccessDataResult<CvDetailDto>(cvDetailDto,"Cv ayrıntısı ile listelendi...");
 	}
+
+	@Override
+	public DataResult<List<GetCvDetailDtoWithQuery>> GetCvDetailDtoWithQuery(){
+		
+		return new SuccessDataResult<List<GetCvDetailDtoWithQuery>>(this.jobSeekerCvDao.GetCvDetailDtoWithQuery());
+	};
 
 }

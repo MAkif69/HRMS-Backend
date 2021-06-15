@@ -2,7 +2,7 @@ package kodlamaio.hrms.dataAccess.abstracts;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -19,21 +19,11 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 	 List<JobPosting> findAllByisActiveTrueOrderByCreatedDateDesc();
 	 List<JobPosting> findByIsActiveTrueAndCompany_userId(int userId);
 	 
-	 
-	
-//	 @Query("Select new kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery"
-//			 +"(j.id, c.companyName)"
-//			 +" From Company c Inner Join c.jobPostings j")
-//	 List<GetJobPostingDtoWithQuery> GetJobPostingDtoWithQuery();
-	 
-
 	 @Query("Select new kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery"
 			 + "(j.id, c.companyName, p.positionName, j.openPositionNumber, j.createdDate, j.lastApplyDate)"
 			 + " From JobPosting j Inner Join j.company c Inner Join j.position p")
 	 List<GetJobPostingDtoWithQuery> GetJobPostingDtoWithQuery();
 	 
-
-
 	 //Select j.job_post_id,c.company_name from job_postings j inner join companies c 
 	 //on jp.user_id=c.user_id
 }

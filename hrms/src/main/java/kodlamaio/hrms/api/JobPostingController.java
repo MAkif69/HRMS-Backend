@@ -53,11 +53,11 @@ public class JobPostingController {
 	public DataResult<List<JobPosting>> getAllActiveWithId(int userId){
 		return this.jobPostingService.findAllisActiveTrueAndByCompany_userId(userId);
 	}
-	
-	@GetMapping("/getJobPostWithDetails")
-	public DataResult<JobPostingDto> getJobPostWithDetails(int jobPostingId){
-		return this.jobPostingService.getJobPostWithDetails(jobPostingId);
-	};
+//	
+//	@GetMapping("/getJobPostWithDetails")
+//	public DataResult<JobPostingDto> getJobPostWithDetails(int jobPostingId){
+//		return this.jobPostingService.getJobPostWithDetails(jobPostingId);
+//	};
 	
 	@GetMapping("/GetJobPostingDtoWithQuery")
 	public DataResult<List<GetJobPostingDtoWithQuery>>  GetJobPostingDtoWithQuery(){

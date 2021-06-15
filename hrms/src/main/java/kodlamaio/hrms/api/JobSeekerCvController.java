@@ -40,11 +40,11 @@ public class JobSeekerCvController {
 //		return this.jobSeekerCvService.getAll();
 //	};
 	
-	
-	@GetMapping("/getCvWithDetails")
-	public DataResult<CvDetailDto> getCvWithDetails(int userId){
-		return this.jobSeekerCvService.getCvWithDetails(userId);
-	};
+//	
+//	@GetMapping("/getCvWithDetails")
+//	public DataResult<CvDetailDto> getCvWithDetails(int userId){
+//		return this.jobSeekerCvService.getCvWithDetails(userId);
+//	};
 
 	@GetMapping("/GetCvDetailDtoWithQuery")
 	public DataResult<List<GetCvDetailDtoWithQuery>> GetCvDetailDtoWithQuery(){

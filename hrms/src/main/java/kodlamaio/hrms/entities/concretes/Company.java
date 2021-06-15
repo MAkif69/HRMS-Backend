@@ -30,17 +30,14 @@ public class Company extends User {
 	private String companyName;
 	
 	@NotNull
-	@JsonIgnore
 	@Column(name="website")
 	private String website;
 	
 	@NotNull
-	@JsonIgnore
 	@Column(name="phone")
 	private String phone;
 	
 	@NotNull
-	@JsonIgnore
 	@Column(name="verify")
 	private boolean verify; 
 	

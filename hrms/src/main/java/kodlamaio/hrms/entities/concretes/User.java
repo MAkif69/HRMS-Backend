@@ -30,12 +30,10 @@ public class User {
 	private int userId;
 	
 	@NotNull
-	@JsonIgnore
 	@Column(name="email")
 	private String eMail;
 	
 	@NotNull
-	@JsonIgnore
 	@Column(name="password")
 	private String password;
 	

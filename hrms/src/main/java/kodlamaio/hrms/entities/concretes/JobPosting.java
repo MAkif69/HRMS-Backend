@@ -51,7 +51,6 @@ public class JobPosting {
 	private int openPositionNumber;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	@JsonIgnore
 	@Column(name="created_date")
 	private Date createdDate;
 	
@@ -60,21 +59,17 @@ public class JobPosting {
 	private Date lastApplyDate;
 	
 	@Column(name="is_active")
-	@JsonIgnore
 	private boolean isActive;
 	
 	@ManyToOne()
-	@JsonIgnore
 	@JoinColumn(name = "position_id")
 	private Position position;
 	 
 	@ManyToOne()
-	@JsonIgnore
 	@JoinColumn(name = "user_id")
 	private Company company;
 	 
 	@ManyToOne()
-	@JsonIgnore
 	@JoinColumn(name = "city_id")
 	private City city;
 	

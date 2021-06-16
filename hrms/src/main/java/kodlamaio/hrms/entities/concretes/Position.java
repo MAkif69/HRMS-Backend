@@ -23,7 +23,6 @@ public class Position {
 	
 	@Id
 	@GeneratedValue
-	@JsonIgnore
 	@Column(name="position_id")
 	private int positionId;
 	

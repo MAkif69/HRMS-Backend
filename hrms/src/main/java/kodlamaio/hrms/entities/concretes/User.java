@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 public class User {
 	
 	@Id
-	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	@Column(name="user_id")
@@ -37,7 +36,7 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@JsonIgnore
+
 	private String enterPasswordAgain;
 	
 }

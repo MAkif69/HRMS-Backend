@@ -29,7 +29,6 @@ public class City {
 	
 	@Id
 	@Autowired
-	@JsonIgnore
 	@Column(name="id")
 	private int cityId;
 	

@@ -32,7 +32,6 @@ public class JobPosting {
 	
 	@Id
 	@Column(name="job_postId")
-	@JsonIgnore
 	@GeneratedValue
 	private int jobPostingId;
 	

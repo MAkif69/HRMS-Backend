@@ -42,7 +42,6 @@ public class Image {
 	private String url;
 	
 	@Column(name="created_date")
-	@JsonIgnore
 	private LocalDate createdDate;
 	
 	

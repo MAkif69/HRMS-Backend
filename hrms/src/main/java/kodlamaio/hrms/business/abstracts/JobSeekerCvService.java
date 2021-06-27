@@ -7,6 +7,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import kodlamaio.hrms.entities.dtos.CvDetailDto;
 import kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery;
+import kodlamaio.hrms.entities.dtos.GetCvInfoSummary;
 
 public interface JobSeekerCvService {
 	public Result add(JobSeekerCV jobSeekerCV);
@@ -20,4 +21,6 @@ public interface JobSeekerCvService {
 	DataResult<CvDetailDto> getCvWithDetails(int userId);
 	
 	DataResult<List<GetCvDetailDtoWithQuery>> GetCvDetailDtoWithQuery();
+	
+	DataResult<List<GetCvInfoSummary>> GetCvInfoSummary();
 }

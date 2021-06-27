@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery;
+import kodlamaio.hrms.entities.dtos.GetCvInfoSummary;
 
 
 
@@ -22,4 +23,10 @@ public interface JobSeekerCvDao extends JpaRepository<JobSeekerCV, Integer> {
 			+"Inner Join jc.department d Inner Join jc.jobExperience e Inner Join jc.language l Inner Join jc.languageLevel le "
 			+"Inner Join jc.socialMedia sm Inner Join jc.skill sk Inner Join js.image ım")
 	List<GetCvDetailDtoWithQuery> GetCvDetailDtoWithQuery();
+	
+	
+	@Query("Select new kodlamaio.hrms.entities.dtos.GetCvInfoSummary"
+			+"(jc.id, js.firstName, js.lastName, s.schoolName, d.departmentName, s.graduateYear)"
+			+"From JobSeekerCV jc Inner Join jc.jobSeeker js Inner Join jc.school s Inner Join jc.department d ")
+	List<GetCvInfoSummary> GetCvInfoSummary();
 }

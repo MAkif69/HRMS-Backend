@@ -3,6 +3,7 @@ package kodlamaio.hrms.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +18,11 @@ import kodlamaio.hrms.entities.concretes.cv.JobSeekerCV;
 import kodlamaio.hrms.entities.concretes.cv.SocialMedia;
 import kodlamaio.hrms.entities.dtos.CvDetailDto;
 import kodlamaio.hrms.entities.dtos.GetCvDetailDtoWithQuery;
+import kodlamaio.hrms.entities.dtos.GetCvInfoSummary;
 
 @RestController
 @RequestMapping("/api/JobSeekerCvs")
+@CrossOrigin
 public class JobSeekerCvController {
 
 	private JobSeekerCvService jobSeekerCvService;
@@ -49,5 +52,10 @@ public class JobSeekerCvController {
 	@GetMapping("/GetCvDetailDtoWithQuery")
 	public DataResult<List<GetCvDetailDtoWithQuery>> GetCvDetailDtoWithQuery(){
 		return this.jobSeekerCvService.GetCvDetailDtoWithQuery();
+	}
+	
+	@GetMapping("/GetCvInfoSummary")
+	public DataResult<List<GetCvInfoSummary>> GetCvInfoSummary(){
+		return this.jobSeekerCvService.GetCvInfoSummary();
 	}
 }

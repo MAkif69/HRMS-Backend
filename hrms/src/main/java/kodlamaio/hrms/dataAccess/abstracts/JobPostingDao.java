@@ -23,7 +23,7 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 	 
 	 @Query("Select new kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery"
 			 + "(j.id, c.companyName, p.positionName, j.openPositionNumber, j.createdDate, j.lastApplyDate)"
-			 + " From JobPosting j Inner Join j.company c Inner Join j.position p")
+			 + " From JobPosting j Inner Join j.company c Inner Join j.position p Where j.isConfirmed=true")
 	 List<GetJobPostingDtoWithQuery> GetJobPostingDtoWithQuery();
 	 
 	 //Select j.job_post_id,c.company_name from job_postings j inner join companies c 

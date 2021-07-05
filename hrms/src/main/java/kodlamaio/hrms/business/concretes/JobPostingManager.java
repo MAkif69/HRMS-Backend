@@ -59,6 +59,13 @@ public class JobPostingManager implements JobPostingService{
 		
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByisActiveTrue(),"Aktif iş ilanları getiridi...");
 	}
+	
+	@Override
+	public DataResult<List<JobPosting>> getAllByisConfirmedTrue() {
+	
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByisConfirmedTrue(),"İş ilanları listelendi...");
+	}
+
 
 	@Override
 	public DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc() {
@@ -112,6 +119,13 @@ public class JobPostingManager implements JobPostingService{
 		return new SuccessDataResult<List<GetJobPostingDtoWithQuery>>(this.jobPostingDao.GetJobPostingDtoWithQuery(),"İlanlar listelendi...");
 	}
 	
+
+	@Override
+	public Result confirmForJobPostings(int jobPostingId) {
+		this.jobPostingDao.confirmForJobPostings(jobPostingId);
+		return new SuccessResult("İş ilanı personel tarafından onaylandı.");
+	}
+	
 	
 		
 	//My business codes
@@ -133,5 +147,7 @@ public class JobPostingManager implements JobPostingService{
 				}
 
 			}
+
+
 
 }

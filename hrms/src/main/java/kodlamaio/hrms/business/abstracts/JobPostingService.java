@@ -2,6 +2,8 @@ package kodlamaio.hrms.business.abstracts;
 
 import java.util.List;
 
+
+
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
@@ -16,12 +18,17 @@ public interface JobPostingService {
 	
 	Result changeActive(int jobPostingId,boolean isActive);
 	
+	Result confirmForJobPostings(int jobPostingId);
+	
 	DataResult<List<JobPosting>> getAllByisActiveTrue();
+	DataResult<List<JobPosting>> getAllByisConfirmedTrue();
 	DataResult<List<JobPosting>> findAllByisActiveTrueOrderBycreatedDateDesc();
 	DataResult<List<JobPosting>> findAllisActiveTrueAndByCompany_userId(int userId);
 	
 	DataResult<JobPostingDto> getJobPostWithDetails(int jobPostingId);
 	
 	DataResult<List<GetJobPostingDtoWithQuery>> GetJobPostingDtoWithQuery();
+	
+	
 
 }

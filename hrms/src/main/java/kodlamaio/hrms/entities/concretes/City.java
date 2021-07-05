@@ -36,5 +36,6 @@ public class City {
 	private String cityName;
 	
 	@OneToMany(mappedBy = "city")
+	@JsonIgnore
 	private List<JobPosting> jobPostings;
 }

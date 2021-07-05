@@ -42,5 +42,6 @@ public class Company extends User {
 	private boolean verify; 
 	
 	@OneToMany(mappedBy = "company")
+	@JsonIgnore
 	private List<JobPosting> jobPostings;
 }

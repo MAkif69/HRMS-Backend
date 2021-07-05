@@ -57,6 +57,7 @@ public class JobSeeker extends User{
 	private boolean verify;
 	
 	@OneToMany(mappedBy = "jobSeeker")
+	@JsonIgnore
 	private List<JobSeekerCV> jobSeekerCv;
 	
 	@OneToOne(mappedBy = "jobSeeker", optional = false, fetch = FetchType.LAZY)

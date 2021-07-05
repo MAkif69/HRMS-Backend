@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -59,6 +59,13 @@ public class JobPosting {
 	@Column(name="is_active")
 	private boolean isActive;
 	
+//	@Column(name="is_confirm", nullable = false, columnDefinition = "boolean default false")
+//	private boolean isConfirmed;
+	
+	@Column(name="is_confirm")
+	@JsonIgnore
+	private boolean isConfirmed = false;
+		
 	@ManyToOne()
 	@JoinColumn(name = "position_id")
 	private Position position;

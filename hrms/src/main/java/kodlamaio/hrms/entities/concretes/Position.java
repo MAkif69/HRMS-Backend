@@ -30,6 +30,7 @@ public class Position {
 	private String positionName;
 	
 	@OneToMany(mappedBy = "position")
+	@JsonIgnore
 	private List<JobPosting> jobPostings;
 	
 }

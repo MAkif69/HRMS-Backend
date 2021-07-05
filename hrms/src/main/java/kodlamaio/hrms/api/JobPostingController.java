@@ -2,6 +2,8 @@ package kodlamaio.hrms.api;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +46,11 @@ public class JobPostingController {
 		return this.jobPostingService.getAllByisActiveTrue();
 	}
 	
+	@GetMapping("/getAllByisConfirmedTrue")
+	public DataResult<List<JobPosting>> getAllByisConfirmedTrue(){
+		return this.jobPostingService.getAllByisConfirmedTrue();
+	}
+	
 	@GetMapping("/getallActiveDesc")
 	public DataResult<List<JobPosting>> getAllActiveDesc(){
 		return this.jobPostingService.findAllByisActiveTrueOrderBycreatedDateDesc();
@@ -75,5 +82,11 @@ public class JobPostingController {
 		
 		return this.jobPostingService.changeActive(jobPostingId, isActive);
 		
+	}
+	
+	@PostMapping("/confirmForJobPostings")
+	@Transactional
+	public Result confirmForJobPostings(int jobPostingId) {
+		return this.jobPostingService.confirmForJobPostings(jobPostingId);
 	}
 }

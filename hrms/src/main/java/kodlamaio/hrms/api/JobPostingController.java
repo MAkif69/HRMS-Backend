@@ -19,6 +19,7 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
 import kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery;
+import kodlamaio.hrms.entities.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.dtos.JobPostingDto;
 
 
@@ -73,8 +74,8 @@ public class JobPostingController {
 	};
 	
 	@PostMapping
-	public Result add(@RequestBody JobPosting jobPosting) {
-		return  this.jobPostingService.add(jobPosting);
+	public Result add(@RequestBody JobPostingAddDto jobPostingAddDto) {
+		return  this.jobPostingService.add(jobPostingAddDto);
 	}
 	
 	@PutMapping("update")

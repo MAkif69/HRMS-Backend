@@ -9,10 +9,11 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
 import kodlamaio.hrms.entities.dtos.JobPostingDto;
 import kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery;
+import kodlamaio.hrms.entities.dtos.JobPostingAddDto;
 
 public interface JobPostingService {
 	
-	public Result add(JobPosting jobPosting);
+	public Result add(JobPostingAddDto jobPostingAddDto);
 	
 	public DataResult<List<JobPosting>> getAll();
 	

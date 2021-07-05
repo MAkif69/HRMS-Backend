@@ -6,4 +6,5 @@ import kodlamaio.hrms.entities.concretes.WorkTimeType;
 
 public interface WorkTimeTypeDao extends JpaRepository<WorkTimeType, Integer>{
 
+	WorkTimeType getById(int id);
 }

@@ -12,4 +12,6 @@ public interface CompanyDao extends JpaRepository<Company, Integer> {
 	boolean existsByeMailIs(String eMail);
 	
 	List<Company> findByJobPostings_jobPostingId(int jobPostingId);
+	
+	Company getByuserId(int userId);
 }

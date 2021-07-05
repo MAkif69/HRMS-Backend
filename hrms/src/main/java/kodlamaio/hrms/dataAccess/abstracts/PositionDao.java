@@ -9,4 +9,6 @@ public interface PositionDao extends JpaRepository<Position, Integer> {
 	boolean existsByPositionName(String positionName);
 	
 	List<Position> findByJobPostings_jobPostingId(int jobPostingId);
+	
+	Position getBypositionId(int positionId);
 }

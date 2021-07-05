@@ -6,4 +6,5 @@ import kodlamaio.hrms.entities.concretes.WorkType;
 
 public interface WorkTypeDao extends JpaRepository<WorkType, Integer> {
 
+	WorkType getById(int id);
 }

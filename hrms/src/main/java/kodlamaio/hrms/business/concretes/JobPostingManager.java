@@ -14,30 +14,64 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstracts.CityDao;
+import kodlamaio.hrms.dataAccess.abstracts.CompanyDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
+import kodlamaio.hrms.dataAccess.abstracts.PositionDao;
+import kodlamaio.hrms.dataAccess.abstracts.WorkTimeTypeDao;
+import kodlamaio.hrms.dataAccess.abstracts.WorkTypeDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
 import kodlamaio.hrms.entities.dtos.GetJobPostingDtoWithQuery;
+import kodlamaio.hrms.entities.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.dtos.JobPostingDto;
 
 @Service
 public class JobPostingManager implements JobPostingService{
 
 	private JobPostingDao jobPostingDao;
+	private CityDao  cityDao;
+	private CompanyDao companyDao;
+	private PositionDao positionDao;
+	private WorkTimeTypeDao workTimeTypeDao;
+	private WorkTypeDao workTypeDao;
 	private CityService cityServie;
 	private PositionService positionService;
 	private CompanyService companyService;
 	
 	@Autowired
-	public JobPostingManager(JobPostingDao jobPostingDao,CityService cityServie,PositionService positionService,CompanyService companyService) {
+	public JobPostingManager(JobPostingDao jobPostingDao,CityService cityServie,
+			                 PositionService positionService,CompanyService companyService,
+			                 CityDao cityDao,CompanyDao companyDao,PositionDao positionDao,
+			                 WorkTimeTypeDao workTimeTypeDao, WorkTypeDao workTypeDao) {
 		super();
 		this.jobPostingDao = jobPostingDao;
+		this.cityDao=cityDao;
+		this.companyDao=companyDao;
+		this.positionDao=positionDao;
+		this.workTypeDao=workTypeDao;
+		this.workTimeTypeDao=workTimeTypeDao;
 		this.cityServie=cityServie;
 		this.positionService=positionService;
 		this.companyService=companyService;
 	}
 
 	@Override
-	public Result add(JobPosting jobPosting) {
+	public Result add(JobPostingAddDto jobPostingAddDto) {
+		
+		JobPosting jobPosting = new JobPosting();
+		jobPosting.setCity(this.cityDao.getBycityId(jobPostingAddDto.getCityId()));
+		jobPosting.setCompany(this.companyDao.getByuserId(jobPostingAddDto.getCompanyId()));
+		jobPosting.setPosition(this.positionDao.getBypositionId(jobPostingAddDto.getPositionId()));
+		jobPosting.setWorkTimeType(this.workTimeTypeDao.getById(jobPostingAddDto.getWorkTimeId()));
+		jobPosting.setWorkType(this.workTypeDao.getById(jobPostingAddDto.getWorkTypeId()));
+		jobPosting.setCreatedDate(jobPostingAddDto.getCreatedDate());
+		jobPosting.setLastApplyDate(jobPostingAddDto.getLastApplyDate());
+		jobPosting.setJobDescription(jobPostingAddDto.getJobDescription());
+		jobPosting.setMaxSalary(jobPostingAddDto.getMaxSalary());
+		jobPosting.setMinSalary(jobPostingAddDto.getMinSalary());
+		jobPosting.setOpenPositionNumber(jobPostingAddDto.getOpenPositionNumber());
+
+		
 		if (!CheckMandatoryRules(jobPosting)) {
 			return new ErrorResult("Lütfen zorunlu alanları giriniz..");
 		} else {
@@ -133,7 +167,7 @@ public class JobPostingManager implements JobPostingService{
 		 boolean CheckMandatoryRules(JobPosting jobPosting) {
 			  
 				if (
-						 jobPosting.getJobDescription().isEmpty() 
+						jobPosting.getJobDescription().isEmpty() 
 						
 						|| jobPosting.getOpenPositionNumber() == 0
 						)
